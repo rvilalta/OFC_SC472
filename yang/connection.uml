@@ -1,0 +1,38 @@
+'Download plantuml from http://plantuml.sourceforge.net/ 
+'Generate png with java -jar plantuml.jar <file> 
+'Output in img/<module>.png 
+'If Java spits out memory error increase heap size with java -Xmx1024m  -jar plantuml.jar <file> 
+@startuml img/connection.png 
+hide empty fields 
+hide empty methods 
+hide <<case>> circle
+hide <<augment>> circle
+hide <<choice>> circle
+hide <<leafref>> stereotype
+hide <<leafref>> circle
+page 1x1 
+Title connection 
+package "topology:topology" as topology_topology { 
+} 
+note top of connection_connection : <b>Namespace: </b> urn:connection \n<b>Prefix: </b> connection \n<b>Organization : </b>\nCTTC \n<b>Contact : </b>\nricard.vilalta@cttc.es \n<b>Revision : </b> 2018-08-24 \n
+package "connection:connection" as connection_connection { 
+topology_topology +-- connection_connection
+class "connection" as connection << (M, #33CCFF) module>> 
+class "connection" as connection_I_connection_grouping <<(G,Lime) grouping>> 
+connection_I_connection_grouping : connection-id : string  
+connection_I_connection_grouping : source-node : leafref : /topology:topology/topology:node/topology:node-id  
+connection_I_connection_grouping : target-node : leafref : /topology:topology/topology:node/topology:node-id  
+connection_I_connection_grouping : source-port : leafref : /topology:topology/topology:node/topology:port/topology:port-id  
+connection_I_connection_grouping : target-port : leafref : /topology:topology/topology:node/topology:port/topology:port-id  
+connection_I_connection_grouping : bandwidth : uint32  
+connection_I_connection_grouping : layer-protocol-name : topology:layer-protocol-name  
+class "connection" as connection_I_connection << (L, #FF7700) list>> 
+connection *-- "0..N" connection_I_connection 
+connection_I_connection : connection {uses} 
+} 
+
+connection_I_connection --> connection_I_connection_grouping : uses 
+center footer
+ <size:20> UML Generated : 2018-11-08 09:13 </size>
+ endfooter 
+@enduml 

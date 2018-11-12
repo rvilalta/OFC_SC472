@@ -1,0 +1,9 @@
+module: connection
+    +--rw connection* [connection-id]
+       +--rw connection-id          string
+       +--rw source-node?           -> /topology:topology/node/node-id
+       +--rw target-node?           -> /topology:topology/node/node-id
+       +--rw source-port?           -> /topology:topology/node/port/port-id
+       +--rw target-port?           -> /topology:topology/node/port/port-id
+       +--rw bandwidth?             uint32
+       +--rw layer-protocol-name?   topology:layer-protocol-name

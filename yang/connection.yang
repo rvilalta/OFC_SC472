@@ -1,0 +1,68 @@
+module connection {
+
+  namespace "urn:connection";
+
+  prefix "connection";
+
+  import topology {
+    prefix "topology";
+  }
+
+  organization
+    "CTTC";
+
+  contact
+    "ricard.vilalta@cttc.es";
+
+  description
+    "Basic example of network topology";
+
+  revision "2018-08-24" {
+    description "Basic example of network topology";
+    reference "";
+  }
+   
+  /**
+   * Groupings
+   */
+  grouping connection {
+    leaf connection-id {
+      type string;
+    }
+    leaf source-node {
+      type leafref {
+        path "/topology:topology/topology:node/topology:node-id";
+      }
+    }
+    leaf target-node {
+      type leafref {
+        path "/topology:topology/topology:node/topology:node-id";
+      }    
+    }
+    leaf source-port {
+      type leafref {
+        path "/topology:topology/topology:node/topology:port/topology:port-id";
+      }    
+    }
+    leaf target-port {
+      type leafref {
+        path "/topology:topology/topology:node/topology:port/topology:port-id";
+      }    
+    }
+    leaf bandwidth {
+      type uint32;
+    }
+    leaf layer-protocol-name {
+      type topology:layer-protocol-name;
+    }
+  }
+
+  /**
+   * Container/lists
+   */
+  list connection {
+    key "connection-id";
+    uses connection;
+  }
+
+}

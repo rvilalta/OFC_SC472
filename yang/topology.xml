@@ -1,0 +1,23 @@
+<topology xmlns="urn:topology">
+  <topology>
+    <node>
+      <node-id>node1</node-id>
+      <port>
+        <port-id>node1portA</port-id>
+      </port>
+    </node>
+    <node>
+      <node-id>node2</node-id>
+      <port>
+        <port-id>node2portA</port-id>
+      </port>
+    </node>
+    <link>
+      <link-id>link1</link-id>    
+      <source-node>node1</source-node>
+      <source-port>node1portA</source-port>
+      <target-node>node2</target-node>
+      <target-port>node2portA</target-port>
+    </link>
+  </topology>
+</topology>

@@ -1,0 +1,99 @@
+module topology {
+
+  namespace "urn:topology";
+
+  prefix "topology";
+
+  organization
+    "CTTC";
+
+  contact
+    "ricard.vilalta@cttc.es";
+
+  description
+    "Basic example of network topology";
+
+  revision "2018-08-24" {
+    description "Basic example of network topology";
+    reference "";
+  }
+
+  /**
+   * Typedefs / identities
+   */
+  typedef layer-protocol-name {
+     type enumeration {
+         enum "ETH";
+         enum "OPTICAL";
+     }
+   }
+   
+   
+  /**
+   * Groupings
+   */
+  grouping port {
+    leaf port-id {
+      type string;
+    }
+    leaf layer-protocol-name {
+      type layer-protocol-name;
+    }
+
+  }
+
+  grouping node {
+    leaf node-id {
+      type string;
+    }
+    list port {
+       key "port-id";
+       uses port;
+    }
+  }
+
+  grouping link {
+    leaf link-id {
+      type string;
+    }
+    leaf source-node {
+      type leafref {
+        path "/topology/node/node-id";
+      }
+    }
+    leaf target-node {
+      type leafref {
+        path "/topology/node/node-id";
+      }    
+    }
+    leaf source-port {
+      type leafref {
+        path "/topology/node/port/port-id";
+      }    
+    }
+    leaf target-port {
+      type leafref {
+        path "/topology/node/port/port-id";
+      }    
+    }
+  }
+
+  grouping topology {
+      list node {
+        key "node-id";
+        uses node;
+      }
+      list link {
+        key "link-id";
+        uses link;
+      }  
+  }
+
+  /**
+   * Container/lists
+   */
+  container topology {
+    uses topology;
+  }
+
+}

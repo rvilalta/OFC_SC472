@@ -1,0 +1,13 @@
+module: topology
+    +--rw topology
+       +--rw node* [node-id]
+       |  +--rw node-id    string
+       |  +--rw port* [port-id]
+       |     +--rw port-id                string
+       |     +--rw layer-protocol-name?   layer-protocol-name
+       +--rw link* [link-id]
+          +--rw link-id        string
+          +--rw source-node?   -> /topology/node/node-id
+          +--rw target-node?   -> /topology/node/node-id
+          +--rw source-port?   -> /topology/node/port/port-id
+          +--rw target-port?   -> /topology/node/port/port-id
