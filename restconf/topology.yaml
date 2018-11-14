@@ -1,0 +1,440 @@
+---
+swagger: "2.0"
+info:
+  description: "topology API generated from yang definitions"
+  version: "1.0"
+  title: "topology API"
+host: "localhost:1234"
+consumes:
+- "application/yang-data+json"
+produces:
+- "application/yang-data+json"
+paths:
+  /data/topology/:
+    get:
+      tags:
+      - "topology"
+      description: "returns topology.Topology"
+      parameters: []
+      responses:
+        200:
+          description: "topology.Topology"
+          schema:
+            $ref: "#/definitions/topology.Topology"
+        400:
+          description: "Internal error"
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Topology"
+      parameters:
+      - in: "body"
+        name: "topology.Topology.body-param"
+        description: "topology.Topology to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Topology"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+    put:
+      tags:
+      - "topology"
+      description: "creates or updates topology.Topology"
+      parameters:
+      - in: "body"
+        name: "topology.Topology.body-param"
+        description: "topology.Topology to be added or updated"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Topology"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        204:
+          description: "Object modified"
+    delete:
+      tags:
+      - "topology"
+      description: "removes topology.Topology"
+      parameters: []
+      responses:
+        400:
+          description: "Internal error"
+        204:
+          description: "Object deleted"
+  /data/topology/link/:
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Link"
+      parameters:
+      - in: "body"
+        name: "topology.Link.body-param"
+        description: "topology.Link to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Link"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+  /data/topology/link={link-id}/:
+    get:
+      tags:
+      - "topology"
+      description: "returns topology.Link"
+      parameters:
+      - name: "link-id"
+        in: "path"
+        description: "Id of link"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "topology.Link"
+          schema:
+            $ref: "#/definitions/topology.Link"
+        400:
+          description: "Internal error"
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Link"
+      parameters:
+      - name: "link-id"
+        in: "path"
+        description: "Id of link"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Link.body-param"
+        description: "topology.Link to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Link"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+    put:
+      tags:
+      - "topology"
+      description: "creates or updates topology.Link"
+      parameters:
+      - name: "link-id"
+        in: "path"
+        description: "Id of link"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Link.body-param"
+        description: "topology.Link to be added or updated"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Link"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        204:
+          description: "Object modified"
+    delete:
+      tags:
+      - "topology"
+      description: "removes topology.Link"
+      parameters:
+      - name: "link-id"
+        in: "path"
+        description: "Id of link"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Internal error"
+        204:
+          description: "Object deleted"
+  /data/topology/node/:
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Node"
+      parameters:
+      - in: "body"
+        name: "topology.Node.body-param"
+        description: "topology.Node to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Node"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+  /data/topology/node={node-id}/:
+    get:
+      tags:
+      - "topology"
+      description: "returns topology.Node"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "topology.Node"
+          schema:
+            $ref: "#/definitions/topology.Node"
+        400:
+          description: "Internal error"
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Node"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Node.body-param"
+        description: "topology.Node to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Node"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+    put:
+      tags:
+      - "topology"
+      description: "creates or updates topology.Node"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Node.body-param"
+        description: "topology.Node to be added or updated"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Node"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        204:
+          description: "Object modified"
+    delete:
+      tags:
+      - "topology"
+      description: "removes topology.Node"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Internal error"
+        204:
+          description: "Object deleted"
+  /data/topology/node={node-id}/port/:
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Port"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Port.body-param"
+        description: "topology.Port to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Port"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+  /data/topology/node={node-id}/port={port-id}/:
+    get:
+      tags:
+      - "topology"
+      description: "returns topology.Port"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - name: "port-id"
+        in: "path"
+        description: "Id of port"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "topology.Port"
+          schema:
+            $ref: "#/definitions/topology.Port"
+        400:
+          description: "Internal error"
+    post:
+      tags:
+      - "topology"
+      description: "creates topology.Port"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - name: "port-id"
+        in: "path"
+        description: "Id of port"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Port.body-param"
+        description: "topology.Port to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Port"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+    put:
+      tags:
+      - "topology"
+      description: "creates or updates topology.Port"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - name: "port-id"
+        in: "path"
+        description: "Id of port"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "topology.Port.body-param"
+        description: "topology.Port to be added or updated"
+        required: false
+        schema:
+          $ref: "#/definitions/topology.Port"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        204:
+          description: "Object modified"
+    delete:
+      tags:
+      - "topology"
+      description: "removes topology.Port"
+      parameters:
+      - name: "node-id"
+        in: "path"
+        description: "Id of node"
+        required: true
+        type: "string"
+      - name: "port-id"
+        in: "path"
+        description: "Id of port"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Internal error"
+        204:
+          description: "Object deleted"
+definitions:
+  topology.LayerProtocolName:
+    type: "string"
+    enum:
+    - "ETH"
+    - "OPTICAL"
+  topology.Link:
+    type: "object"
+    properties:
+      target-port:
+        type: "string"
+        x-path: "/topology/node/port/port-id"
+      source-port:
+        type: "string"
+        x-path: "/topology/node/port/port-id"
+      target-node:
+        type: "string"
+        x-path: "/topology/node/node-id"
+      link-id:
+        type: "string"
+      source-node:
+        type: "string"
+        x-path: "/topology/node/node-id"
+  topology.Node:
+    type: "object"
+    properties:
+      node-id:
+        type: "string"
+      port:
+        type: "array"
+        items:
+          $ref: "#/definitions/topology.Port"
+  topology.Port:
+    type: "object"
+    properties:
+      layer-protocol-name:
+        $ref: "#/definitions/topology.LayerProtocolName"
+      port-id:
+        type: "string"
+  topology.Topology:
+    type: "object"
+    properties:
+      link:
+        type: "array"
+        items:
+          $ref: "#/definitions/topology.Link"
+      node:
+        type: "array"
+        items:
+          $ref: "#/definitions/topology.Node"

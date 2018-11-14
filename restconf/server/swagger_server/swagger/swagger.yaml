@@ -1,0 +1,156 @@
+---
+swagger: "2.0"
+info:
+  description: "connection API generated from yang definitions"
+  version: "1.0"
+  title: "connection API"
+host: "localhost:1234"
+consumes:
+- "application/yang-data+json"
+produces:
+- "application/yang-data+json"
+paths:
+  /data/connection/:
+    post:
+      tags:
+      - "connection"
+      description: "creates connection.Connection"
+      operationId: "data_connection_post"
+      parameters:
+      - in: "body"
+        name: "connection_Connection_body_param"
+        description: "connection.Connection to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/connection.Connection"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+      x-swagger-router-controller: "swagger_server.controllers.connection_controller"
+  /data/connection={connection_id}/:
+    get:
+      tags:
+      - "connection"
+      description: "returns connection.Connection"
+      operationId: "data_connectionconnection_id_get"
+      parameters:
+      - name: "connection_id"
+        in: "path"
+        description: "Id of connection"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "connection.Connection"
+          schema:
+            $ref: "#/definitions/connection.Connection"
+        400:
+          description: "Internal error"
+      x-swagger-router-controller: "swagger_server.controllers.connection_controller"
+    post:
+      tags:
+      - "connection"
+      description: "creates connection.Connection"
+      operationId: "data_connectionconnection_id_post"
+      parameters:
+      - name: "connection_id"
+        in: "path"
+        description: "Id of connection"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "connection_Connection_body_param"
+        description: "connection.Connection to be added to list"
+        required: false
+        schema:
+          $ref: "#/definitions/connection.Connection"
+      responses:
+        201:
+          description: "Object created"
+        400:
+          description: "Internal error"
+        409:
+          description: "Object already exists"
+      x-swagger-router-controller: "swagger_server.controllers.connection_controller"
+    put:
+      tags:
+      - "connection"
+      description: "creates or updates connection.Connection"
+      operationId: "data_connectionconnection_id_put"
+      parameters:
+      - name: "connection_id"
+        in: "path"
+        description: "Id of connection"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "connection_Connection_body_param"
+        description: "connection.Connection to be added or updated"
+        required: false
+        schema:
+          $ref: "#/definitions/connection.Connection"
+      responses:
+        201:
+          description: "Object created"
+        204:
+          description: "Object modified"
+        400:
+          description: "Internal error"
+      x-swagger-router-controller: "swagger_server.controllers.connection_controller"
+    delete:
+      tags:
+      - "connection"
+      description: "removes connection.Connection"
+      operationId: "data_connectionconnection_id_delete"
+      parameters:
+      - name: "connection_id"
+        in: "path"
+        description: "Id of connection"
+        required: true
+        type: "string"
+      responses:
+        204:
+          description: "Object deleted"
+        400:
+          description: "Internal error"
+      x-swagger-router-controller: "swagger_server.controllers.connection_controller"
+definitions:
+  connection.Connection:
+    type: "object"
+    properties:
+      target-port:
+        type: "string"
+        x-path: "/topology:topology/topology:node/topology:port/topology:port-id"
+      source-port:
+        type: "string"
+        x-path: "/topology:topology/topology:node/topology:port/topology:port-id"
+      target-node:
+        type: "string"
+        x-path: "/topology:topology/topology:node/topology:node-id"
+      connection-id:
+        type: "string"
+      bandwidth:
+        type: "integer"
+        format: "int64"
+      source-node:
+        type: "string"
+        x-path: "/topology:topology/topology:node/topology:node-id"
+      layer-protocol-name:
+        $ref: "#/definitions/topology.LayerProtocolName"
+    example:
+      target-port: "target-port"
+      source-port: "source-port"
+      target-node: "target-node"
+      connection-id: "connection-id"
+      bandwidth: 0
+      source-node: "source-node"
+      layer-protocol-name: {}
+  topology.LayerProtocolName:
+    type: "string"
+    enum:
+    - "ETH"
+    - "OPTICAL"

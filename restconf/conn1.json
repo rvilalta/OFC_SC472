@@ -1,0 +1,7 @@
+{
+  "source-node" : "node1",
+  "target-node" : "node2",
+  "source-port" : "node1portA",
+  "target-port" : "node2portA",
+  "bandwidth" : 10
+}
