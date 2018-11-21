@@ -1,0 +1,32 @@
+//Example of connection
+syntax = "proto3";
+package connection;
+
+import "google/protobuf/empty.proto";
+
+service ConnectionService {
+  rpc CreateConnection (Connection) returns (google.protobuf.Empty) {}
+  rpc ListConnection (google.protobuf.Empty) returns (ConnectionList) {}
+}
+
+
+message Connection {
+  string connectionId = 1;
+  string sourceNode = 2;  
+  string targetNode = 3;
+  string sourcePort = 4;  
+  string targetPort = 5;  
+  uint32 bandwidth = 6;
+  
+  enum LayerProtocolName {
+    ETH = 0;
+    OPTICAL = 1;
+  }
+
+  LayerProtocolName layerProtocolName = 7;
+
+}
+
+message ConnectionList {
+  repeated Connection connection = 1;
+}
