@@ -1,4 +1,4 @@
-# OFC2020 Short Course 472 - Hands-on: Controlling and Monitoring Optical Network Equipment with Netconf/YANG
+# OFC2020 Short Course 472 - Hands-on: Controlling and Monitoring Optical Network Equipment
 
 This github repository is for educational purposes. It contains the necessary materials for the upcoming OFC SC 472.
 
