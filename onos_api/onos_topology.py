@@ -18,9 +18,9 @@ def retrieveTopology(ip, port, user, password):
 
 if __name__ == "__main__":
 
-    print "Reading network-topology"
+    print ("Reading network-topology")
     topo = retrieveTopology(IP, PORT, USER, PASSWORD)
-    print json.dumps(topo, indent=4, sort_keys=True)
+    print ( json.dumps(topo, indent=4, sort_keys=True) )
 
 
     

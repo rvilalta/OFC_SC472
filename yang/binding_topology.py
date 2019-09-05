@@ -39,8 +39,8 @@ class yc_port_topology__topology_node_port(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__layer_protocol_name = YANGDynClass(base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={u'ETH': {}, u'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)
     self.__port_id = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="port-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='urn:topology', defining_module='topology', yang_type='string', is_config=True)
+    self.__layer_protocol_name = YANGDynClass(base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={'ETH': {}, 'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -67,7 +67,7 @@ class yc_port_topology__topology_node_port(PybindBase):
     if hasattr(self, "_parent"):
       return self._parent._path()+[self._yang_name]
     else:
-      return [u'topology', u'node', u'port']
+      return ['topology', 'node', 'port']
 
   def _get_port_id(self):
     """
@@ -124,12 +124,12 @@ class yc_port_topology__topology_node_port(PybindBase):
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={u'ETH': {}, u'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)
+      t = YANGDynClass(v,base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={'ETH': {}, 'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
           'error-string': """layer_protocol_name must be of a type compatible with layer-protocol-name""",
           'defined-type': "topology:layer-protocol-name",
-          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={u'ETH': {}, u'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)""",
+          'generated-type': """YANGDynClass(base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={'ETH': {}, 'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)""",
         })
 
     self.__layer_protocol_name = t
@@ -137,7 +137,7 @@ class yc_port_topology__topology_node_port(PybindBase):
       self._set()
 
   def _unset_layer_protocol_name(self):
-    self.__layer_protocol_name = YANGDynClass(base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={u'ETH': {}, u'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)
+    self.__layer_protocol_name = YANGDynClass(base=RestrictedClassType(base_type=six.text_type,                                     restriction_type="dict_key",                                     restriction_arg={'ETH': {}, 'OPTICAL': {}},), is_leaf=True, yang_name="layer-protocol-name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='layer-protocol-name', is_config=True)
 
   port_id = __builtin__.property(_get_port_id, _set_port_id)
   layer_protocol_name = __builtin__.property(_get_layer_protocol_name, _set_layer_protocol_name)
@@ -193,7 +193,7 @@ class yc_node_topology__topology_node(PybindBase):
     if hasattr(self, "_parent"):
       return self._parent._path()+[self._yang_name]
     else:
-      return [u'topology', u'node']
+      return ['topology', 'node']
 
   def _get_node_id(self):
     """
@@ -291,11 +291,11 @@ class yc_link_topology__topology_link(PybindBase):
     self._path_helper = False
 
     self._extmethods = False
-    self.__source_port = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
-    self.__target_node = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="target-node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
-    self.__target_port = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="target-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
-    self.__source_node = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="source-node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
     self.__link_id = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="link-id", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='urn:topology', defining_module='topology', yang_type='string', is_config=True)
+    self.__source_node = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="source-node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
+    self.__target_node = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="target-node", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
+    self.__source_port = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="source-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
+    self.__target_port = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="target-port", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:topology', defining_module='topology', yang_type='leafref', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -322,7 +322,7 @@ class yc_link_topology__topology_link(PybindBase):
     if hasattr(self, "_parent"):
       return self._parent._path()+[self._yang_name]
     else:
-      return [u'topology', u'link']
+      return ['topology', 'link']
 
   def _get_link_id(self):
     """
@@ -550,7 +550,7 @@ class yc_topology_topology__topology(PybindBase):
     if hasattr(self, "_parent"):
       return self._parent._path()+[self._yang_name]
     else:
-      return [u'topology']
+      return ['topology']
 
   def _get_node(self):
     """

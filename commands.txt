@@ -1,0 +1,40 @@
+This is a quick guide for having fast access to the SC commands
+
+== ADMIN
+Please, login as root, as many examples need certain privileges.
+$ su
+> osboxes.org
+
+== YANG
+$ cd /root/OFC_SC472/yang
+$ cat topology.yang
+$ pyang -f tree topology.yang 
+$ pyang -f tree topology.yang -o topology.tree
+$ pyang -f sample-xml-skeleton --sample-xml-skeleton-annotations topology.yang
+$ pyang -f uml topology.yang -o topology.uml
+$ java -jar plantuml.jar topology.uml
+=== PYANGBIND
+$ export PYBINDPLUGIN=`/usr/bin/env python3 -c \
+'import pyangbind; import os; print ("{}/plugin".format(os.path.dirname(pyangbind.__file__)))'`
+
+$ echo $PYBINDPLUGIN
+$ pyang -f pybind topology.yang --plugindir $PYBINDPLUGIN -o binding_topology.py
+$ python3 topology.py
+
+== RUN ONOS
+$ cd /root/onos-2.1.0/apache-karaf-4.2.3/bin/
+$ ./karaf clean
+> app activate org.onosproject.openflow
+> app activate org.onosproject.gui
+
+In another terminal, run mininet:
+$ mn --topo linear,3 --mac --controller=remote,ip=127.0.0.1,port=6653 --switch ovs,protocols=OpenFlow13
+
+In another terminal, we use ONOS REST API:
+$ curl -X GET -u onos:rocks --header 'Accept: application/json' http://localhost:8181/onos/v1/links | python -m json.tool
+$ cd /root/OFC_SC472/onos_api/
+$ python3 onos_topology.py 
+
+
+
+
