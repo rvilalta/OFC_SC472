@@ -21,6 +21,18 @@ $ echo $PYBINDPLUGIN
 $ pyang -f pybind topology.yang --plugindir $PYBINDPLUGIN -o binding_topology.py
 $ python3 topology.py
 
+=== EXERCISE: CONNECTION
+$ python3 connection.py
+
+== NETCONF
+$ cd /root/OFC_SC472/netconf
+$ unzip confd-basic-6.4.linux.x86_64.zip  
+$ cd confd-basic-6.4.linux.x86_64/
+$ ./confd-basic-6.4.linux.x86_64.installer.bin /root/confd/
+
+
+
+
 == RUN ONOS
 $ cd /root/onos-2.1.0/apache-karaf-4.2.3/bin/
 $ ./karaf clean
