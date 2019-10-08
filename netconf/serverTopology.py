@@ -1,6 +1,7 @@
 import sys
 import time
 import logging
+import os
 
 import binding_topology
 from pyangbind.lib.serialise import pybindIETFXMLEncoder, pybindIETFXMLDecoder
@@ -17,8 +18,10 @@ nsmap_add("topology", "urn:topology")
 class MyServer(object):
 
     def __init__(self, username, password, port):
+        host_key_value = os.path.join(os.path.abspath(os.path.dirname(__file__)), "server-key")
         auth = server.SSHUserPassController(username=username, password=password)
-        self.server = server.NetconfSSHServer(server_ctl=auth, server_methods=self, port=port, debug=False)
+        self.server = server.NetconfSSHServer(server_ctl=auth, server_methods=self, port=port, host_key=host_key_value, debug=False)
+        self.load_file()
 
     def load_file(self):    
         # create configuration
@@ -51,7 +54,6 @@ class MyServer(object):
 
 def main(*margs):
     s = MyServer("admin","admin", 830)
-    s.load_file()
     
     if sys.stdout.isatty():
         logging.debug("^C to quit server")

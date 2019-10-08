@@ -13,6 +13,7 @@ $ pyang -f tree topology.yang -o topology.tree
 $ pyang -f sample-xml-skeleton --sample-xml-skeleton-annotations topology.yang
 $ pyang -f uml topology.yang -o topology.uml
 $ java -jar plantuml.jar topology.uml
+
 === PYANGBIND
 $ export PYBINDPLUGIN=`/usr/bin/env python3 -c \
 'import pyangbind; import os; print ("{}/plugin".format(os.path.dirname(pyangbind.__file__)))'`
@@ -25,11 +26,15 @@ $ python3 topology.py
 $ python3 connection.py
 
 == NETCONF
+Run server:
 $ cd /root/OFC_SC472/netconf
-$ unzip confd-basic-6.4.linux.x86_64.zip  
-$ cd confd-basic-6.4.linux.x86_64/
-$ ./confd-basic-6.4.linux.x86_64.installer.bin /root/confd/
+$ python3 serverTopology.py
 
+In another window, run client:
+$ cd /root/OFC_SC472/netconf
+$ python3 clientTopology.py
+
+== RESTCONF
 
 
 
@@ -47,6 +52,54 @@ $ curl -X GET -u onos:rocks --header 'Accept: application/json' http://localhost
 $ cd /root/OFC_SC472/onos_api/
 $ python3 onos_topology.py 
 
+== TAPI
 
 
+== GRPC
+
+
+== OPENCONFIG
+
+
+== APPENDICES 
+
+=== CONFD
+$ cd /root/OFC_SC472/netconf
+$ unzip confd-basic-6.4.linux.x86_64.zip  
+$ cd confd-basic-6.4.linux.x86_64/
+$ ./confd-basic-6.4.linux.x86_64.installer.bin /root/confd/
+
+Data model compilation
+$ cd /root/confd/bin/
+$ ./confdc -c /root/OFC_SC472/yang/topology.yang
+
+Start ConfD
+$ ./confd --foreground -v --addloadpath .
+
+In another terminal, use ConfD-client to populate model
+$ cd /root/confd/bin/
+$ ./confd_cli
+> conf
+> topology node node1
+> exit
+> commit
+> exit
+> exit
+
+Use ConfD-client to show db
+$ ./confd_cli
+> conf
+> show full-configuration
+> exit
+> exit
+
+== NETCONF EDIT-CONFIG
+
+Run server:
+$ cd /root/OFC_SC472/netconf/connection
+$ python3 serverTopologyConnection.py
+
+In another window, run client:
+$ cd /root/OFC_SC472/netconf/connection
+$ python3 clientConnection.py
 

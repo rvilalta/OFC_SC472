@@ -1,6 +1,7 @@
 import sys
 import time
 import logging
+import os
 
 import binding_topology
 import binding_connection
@@ -20,8 +21,12 @@ nsmap_add("connection", "urn:connection")
 class MyServer(object):
 
     def __init__(self, username, password, port):
+        host_key_value = os.path.join(os.path.abspath(os.path.dirname(__file__)), "server-key")
         auth = server.SSHUserPassController(username=username, password=password)
-        self.server = server.NetconfSSHServer(server_ctl=auth, server_methods=self, port=port, debug=False)
+        auth.check_auth_none(username)
+        self.server = server.NetconfSSHServer(server_ctl=auth, server_methods=self, host_key=host_key_value, port=port, debug=True)
+        self.data = None
+        self.load_file()
 
     def load_file(self):    
         # create configuration
@@ -38,6 +43,7 @@ class MyServer(object):
         self.data = data
 
     def nc_append_capabilities(self, capabilities): 
+        logging.debug("--GET capabilities--")
         util.subelm(capabilities, "capability").text = "urn:ietf:params:netconf:capability:xpath:1.0"
         util.subelm(capabilities, "capability").text = NSMAP["topology"]
         util.subelm(capabilities, "capability").text = NSMAP["connection"]        
@@ -53,14 +59,13 @@ class MyServer(object):
     def rpc_edit_config(self, session, rpc, target, new_config):
         logging.debug("--EDIT CONFIG--")
         logging.debug(session)
-        print(etree.tostring(rpc))
-        print(etree.tostring(target))
-        print(etree.tostring(new_config))
         
         data_list = new_config.findall(".//xmlns:connection", namespaces={'xmlns': 'urn:connection'})
         for connect in data_list:
-            logging.debug("APPENDING " + etree.tostring(connect) )
-            print("CURRENT CONNECTION " + etree.tostring(self.data[1]) )
+            logging.debug("connect: " )
+            logging.debug(etree.tostring(connect) )
+            logging.debug("CURRENT CONNECTION")
+            logging.debug(etree.tostring(self.data[1]) )
             self.data[1].append(connect)
             break  
         return util.filter_results(rpc, self.data, None)
@@ -73,7 +78,6 @@ class MyServer(object):
 
 def main(*margs):
     s = MyServer("admin","admin", 830)
-    s.load_file()
     
     if sys.stdout.isatty():
         logging.debug("^C to quit server")
