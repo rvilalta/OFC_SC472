@@ -720,7 +720,7 @@ def retrieve_context_topology_node_node(uuid) -> str:
         return array_cs
 
 def retrieve_context_topology_node_node_by_id(uuid, node_uuid) -> str:
-    logging.info("retrieve_context_topology_node_node_by_id %s $s", uuid, node_uuid)
+    logging.info("retrieve_context_topology_node_node_by_id %s %s", uuid, node_uuid)
     for item in  database.context['topology']:
       if item['uuid'] == uuid:
         for node in item['node']:
@@ -913,11 +913,29 @@ def retrieve_context_topology_node_owned_node_edge_point_name_name(uuid, nodeUui
 def retrieve_context_topology_node_owned_node_edge_point_name_name_by_id(uuid, nodeUuid, ownedNodeEdgePointUuid, valueName) -> str:
     return 'do some magic!'
 
-def retrieve_context_topology_node_owned_node_edge_point_owned_node_edge_point(uuid, nodeUuid) -> str:
-    return 'do some magic!'
+def retrieve_context_topology_node_owned_node_edge_point_owned_node_edge_point(uuid, node_uuid) -> str:
+    logging.info("retrieve_context_topology_node_owned_node_edge_point_owned_node_edge_point %s %s", uuid, node_uuid)
+    for item in  database.context['topology']:
+      if item['uuid'] == uuid:
+        for node in item['node']:
+          if node['uuid']==node_uuid:
+            array_cs=[]
+            for nep in node['owned-node-edge-point']:
+              uri="/restconf/config/context/topology/"+uuid+"/node/"+node_uuid+"/owned-node-edge-point/"+nep['uuid']+"/"
+              array_cs.append(uri)
+            #json = { 'itemlist' : array_cs }
+            return array_cs
 
-def retrieve_context_topology_node_owned_node_edge_point_owned_node_edge_point_by_id(uuid, nodeUuid, ownedNodeEdgePointUuid) -> str:
-    return 'do some magic!'
+
+def retrieve_context_topology_node_owned_node_edge_point_owned_node_edge_point_by_id(uuid, node_uuid, owned_node_edge_point_uuid) -> str:
+    logging.info("retrieve_context_topology_node_owned_node_edge_point_owned_node_edge_point_by_id %s %s %s", uuid, node_uuid, owned_node_edge_point_uuid)
+    for item in  database.context['topology']:
+      if item['uuid'] == uuid:
+        for node in item['node']:
+          if node['uuid'] == node_uuid:
+            for nep in node['owned-node-edge-point']:
+              if nep['uuid'] == owned_node_edge_point_uuid:
+                return nep
 
 def retrieve_context_topology_node_total_potential_capacity_bandwidth_profile_bandwidth_profile(uuid, nodeUuid) -> str:
     return 'do some magic!'

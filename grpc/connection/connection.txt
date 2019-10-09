@@ -4,3 +4,8 @@
 
 %
 conn2node2node1"portB*portA0
+
+
+conn3ab"1*20d
+
+con4fb"2*30o

@@ -17,11 +17,11 @@ class TestConnectionController(BaseTestCase):
 
         
         """
-        connection_Connection_body_param = ConnectionConnection()
+        body = ConnectionConnection()
         response = self.client.open(
             '/data/connection/',
             method='POST',
-            data=json.dumps(connection_Connection_body_param),
+            data=json.dumps(body),
             content_type='application/yang-data+json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -33,8 +33,7 @@ class TestConnectionController(BaseTestCase):
         """
         response = self.client.open(
             '/data/connection={connection-id}/'.format(connection_id='connection_id_example'),
-            method='DELETE',
-            content_type='application/yang-data+json')
+            method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -45,8 +44,7 @@ class TestConnectionController(BaseTestCase):
         """
         response = self.client.open(
             '/data/connection={connection-id}/'.format(connection_id='connection_id_example'),
-            method='GET',
-            content_type='application/yang-data+json')
+            method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -55,11 +53,11 @@ class TestConnectionController(BaseTestCase):
 
         
         """
-        connection_Connection_body_param = ConnectionConnection()
+        body = ConnectionConnection()
         response = self.client.open(
             '/data/connection={connection-id}/'.format(connection_id='connection_id_example'),
             method='POST',
-            data=json.dumps(connection_Connection_body_param),
+            data=json.dumps(body),
             content_type='application/yang-data+json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -69,11 +67,11 @@ class TestConnectionController(BaseTestCase):
 
         
         """
-        connection_Connection_body_param = ConnectionConnection()
+        body = ConnectionConnection()
         response = self.client.open(
             '/data/connection={connection-id}/'.format(connection_id='connection_id_example'),
             method='PUT',
-            data=json.dumps(connection_Connection_body_param),
+            data=json.dumps(body),
             content_type='application/yang-data+json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

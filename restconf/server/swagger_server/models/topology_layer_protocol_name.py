@@ -20,7 +20,6 @@ class TopologyLayerProtocolName(Model):
     """
     ETH = "ETH"
     OPTICAL = "OPTICAL"
-
     def __init__(self):  # noqa: E501
         """TopologyLayerProtocolName - a model defined in Swagger
 

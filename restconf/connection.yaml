@@ -29,13 +29,13 @@ paths:
           description: "Internal error"
         409:
           description: "Object already exists"
-  /data/connection={connectionid}/:
+  /data/connection={connection-id}/:
     get:
       tags:
       - "connection"
       description: "returns connection.Connection"
       parameters:
-      - name: "connectionid"
+      - name: "connection-id"
         in: "path"
         description: "Id of connection"
         required: true

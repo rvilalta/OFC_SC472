@@ -15,7 +15,6 @@ class ConnectionConnection(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, target_port: str=None, source_port: str=None, target_node: str=None, connection_id: str=None, bandwidth: int=None, source_node: str=None, layer_protocol_name: TopologyLayerProtocolName=None):  # noqa: E501
         """ConnectionConnection - a model defined in Swagger
 
@@ -53,7 +52,6 @@ class ConnectionConnection(Model):
             'source_node': 'source-node',
             'layer_protocol_name': 'layer-protocol-name'
         }
-
         self._target_port = target_port
         self._source_port = source_port
         self._target_node = target_node

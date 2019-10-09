@@ -1,0 +1,174 @@
+openapi: 3.0.1
+info:
+  title: connection API
+  description: connection API generated from yang definitions
+  version: "1.0"
+servers:
+- url: //localhost:1234/
+paths:
+  /data/connection/:
+    post:
+      tags:
+      - connection
+      description: creates connection.Connection
+      operationId: data_connection_post
+      requestBody:
+        description: connection.Connection to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/connection.Connection'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.connection_controller
+  /data/connection={connection-id}/:
+    get:
+      tags:
+      - connection
+      description: returns connection.Connection
+      operationId: data_connectionconnection_id_get
+      parameters:
+      - name: connection-id
+        in: path
+        description: Id of connection
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: connection.Connection
+          content:
+            application/yang-data+json:
+              schema:
+                $ref: '#/components/schemas/connection.Connection'
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.connection_controller
+    put:
+      tags:
+      - connection
+      description: creates or updates connection.Connection
+      operationId: data_connectionconnection_id_put
+      parameters:
+      - name: connection-id
+        in: path
+        description: Id of connection
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: connection.Connection to be added or updated
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/connection.Connection'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        204:
+          description: Object modified
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.connection_controller
+    post:
+      tags:
+      - connection
+      description: creates connection.Connection
+      operationId: data_connectionconnection_id_post
+      parameters:
+      - name: connection-id
+        in: path
+        description: Id of connection
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: connection.Connection to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/connection.Connection'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.connection_controller
+    delete:
+      tags:
+      - connection
+      description: removes connection.Connection
+      operationId: data_connectionconnection_id_delete
+      parameters:
+      - name: connection-id
+        in: path
+        description: Id of connection
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Object deleted
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.connection_controller
+components:
+  schemas:
+    connection.Connection:
+      type: object
+      properties:
+        target-port:
+          type: string
+          x-path: /topology:topology/topology:node/topology:port/topology:port-id
+        source-port:
+          type: string
+          x-path: /topology:topology/topology:node/topology:port/topology:port-id
+        target-node:
+          type: string
+          x-path: /topology:topology/topology:node/topology:node-id
+        connection-id:
+          type: string
+        bandwidth:
+          type: integer
+          format: int64
+        source-node:
+          type: string
+          x-path: /topology:topology/topology:node/topology:node-id
+        layer-protocol-name:
+          $ref: '#/components/schemas/topology.LayerProtocolName'
+      example:
+        target-port: target-port
+        source-port: source-port
+        target-node: target-node
+        connection-id: connection-id
+        bandwidth: 0
+        source-node: source-node
+        layer-protocol-name: ETH
+    topology.LayerProtocolName:
+      type: string
+      enum:
+      - ETH
+      - OPTICAL
+
