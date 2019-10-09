@@ -144,8 +144,22 @@ $ cd /root/OFC_SC472/grpc/connectionServiceWithNotif
 $ python3 connectionServiceWithNotif_client.py
 
 
-== OPENCONFIG
+== GNMI
+$ cd /usr/share/gocode/src/ 
+$ export GOPATH=/usr/share/gocode/
+$ go run github.com/openconfig/ygot/generator/generator.go -generate_fakeroot -output_file github.com/google/gnxi/gnmi/modeldata/gostruct/generated.go -package_name gostruct github.com/rvilalta/OFC_SC472/yang/topology.yang 
+$ cd /usr/share/gocode/src/github.com/google/gnxi/gnmi_target
+$ go run gnmi_target.go -bind_address :10161 -config /root/OFC_SC472/gnmi/topology.json --notls -alsologtostderr
 
+RUN CLIENT (in another window)
+$ export GOPATH=/usr/share/gocode/
+$ cd /usr/share/gocode/src/github.com/google/gnxi/gnmi_get
+$ go run gnmi_get.go -notls -xpath "/topology/" -target_addr localhost:10161 -alsologtostderr 
+$ go run gnmi_get.go -notls -xpath "/topology/node[node-id=A]" -target_addr localhost:10161 -alsologtostderr
+
+USE PYTHON CLIENT
+$ cd /usr/share/gocode/src/github.com/google/gnxi/gnmi_cli_py
+$ python py_gnmicli.py -n -m get -t localhost -p 10161 -x /topology -u foo -pass bar
 
 == APPENDIX: CONFD
 $ cd /root/OFC_SC472/netconf

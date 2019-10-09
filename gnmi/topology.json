@@ -1,0 +1,8 @@
+{
+  "topology" : {
+     "node" : [
+       { "node-id" : "A" , "port" : [ { "port-id" : "portA1" } ] },
+       { "node-id" : "B" , "port" : [ { "port-id" : "portB1" } ] }
+     ]
+  }
+}
