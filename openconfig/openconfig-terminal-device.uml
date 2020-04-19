@@ -1,0 +1,400 @@
+'Download plantuml from http://plantuml.sourceforge.net/ 
+'Generate png with java -jar plantuml.jar <file> 
+'Output in img/<module>.png 
+'If Java spits out memory error increase heap size with java -Xmx1024m  -jar plantuml.jar <file> 
+@startuml img/openconfig-terminal-device.png 
+hide empty fields 
+hide empty methods 
+hide <<case>> circle
+hide <<augment>> circle
+hide <<choice>> circle
+hide <<leafref>> stereotype
+hide <<leafref>> circle
+page 1x1 
+Title openconfig-terminal-device 
+package "oc-types:openconfig-types" as oc_types_openconfig_types { 
+} 
+package "oc-opt-types:openconfig-transport-types" as oc_opt_types_openconfig_transport_types { 
+} 
+package "oc-eth:openconfig-if-ethernet" as oc_eth_openconfig_if_ethernet { 
+} 
+package "oc-platform:openconfig-platform" as oc_platform_openconfig_platform { 
+} 
+package "oc-transceiver:openconfig-platform-transceiver" as oc_transceiver_openconfig_platform_transceiver { 
+} 
+package "oc-lldp:openconfig-lldp" as oc_lldp_openconfig_lldp { 
+} 
+package "oc-ext:openconfig-extensions" as oc_ext_openconfig_extensions { 
+} 
+package "yang:ietf-yang-types" as yang_ietf_yang_types { 
+} 
+package "oc-yang:openconfig-yang-types" as oc_yang_openconfig_yang_types { 
+} 
+note top of oc_opt_term_openconfig_terminal_device : <b>Namespace: </b> http://openconfig.net/yang/terminal-device \n<b>Prefix: </b> oc-opt-term \n<b>Organization : </b>\nOpenConfig working group \n<b>Contact : </b>\nOpenConfig working group \nwww.openconfig.net \n<b>Revision : </b> 2019-11-28 \n
+package "oc-opt-term:openconfig-terminal-device" as oc_opt_term_openconfig_terminal_device { 
+oc_types_openconfig_types +-- oc_opt_term_openconfig_terminal_device
+oc_opt_types_openconfig_transport_types +-- oc_opt_term_openconfig_terminal_device
+oc_eth_openconfig_if_ethernet +-- oc_opt_term_openconfig_terminal_device
+oc_platform_openconfig_platform +-- oc_opt_term_openconfig_terminal_device
+oc_transceiver_openconfig_platform_transceiver +-- oc_opt_term_openconfig_terminal_device
+oc_lldp_openconfig_lldp +-- oc_opt_term_openconfig_terminal_device
+oc_ext_openconfig_extensions +-- oc_opt_term_openconfig_terminal_device
+yang_ietf_yang_types +-- oc_opt_term_openconfig_terminal_device
+oc_yang_openconfig_yang_types +-- oc_opt_term_openconfig_terminal_device
+class "openconfig-terminal-device" as openconfig_terminal_device << (M, #33CCFF) module>> 
+class "terminal-input-optical-power" as openconfig_terminal_device_I_terminal_input_optical_power_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_input_optical_power_grouping : input-power : decimal64   {dBm}
+class "terminal-ethernet-protocol-config" as openconfig_terminal_device_I_terminal_ethernet_protocol_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_ethernet_protocol_config_grouping : client-als : enumeration : {NONE,LASER_SHUTDOWN,ETHERNET,}   = ETHERNET 
+openconfig_terminal_device_I_terminal_ethernet_protocol_config_grouping : als-delay : uint32   = 0  {milliseconds}
+class "terminal-ethernet-protocol-state" as openconfig_terminal_device_I_terminal_ethernet_protocol_state_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_grouping : oc-eth:ethernet-interface-state-counters {uses} 
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_grouping : terminal-ethernet-protocol-state-counters {uses} 
+class "terminal-ethernet-protocol-state-counters" as openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : in-pcs-bip-errors : oc-yang:counter64  
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : in-pcs-errored-seconds : oc-yang:counter64  
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : in-pcs-severely-errored-seconds : oc-yang:counter64  
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : in-pcs-unavailable-seconds : oc-yang:counter64  
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : out-pcs-bip-errors : oc-yang:counter64  
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : out-crc-errors : oc-yang:counter64  
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : out-block-errors : oc-yang:counter64  
+class "terminal-ethernet-protocol-top" as openconfig_terminal_device_I_terminal_ethernet_protocol_top_grouping <<(G,Lime) grouping>> 
+class "ethernet" as  openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet <<container>> 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_grouping *-- "1" openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet 
+class "config" as  openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_config <<container>> 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet *-- "1" openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_config 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_config : terminal-ethernet-protocol-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state <<container>> 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet *-- "1" openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state 
+note bottom of openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state : terminal-ethernet-protocol-config {uses} 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state : terminal-ethernet-protocol-state {uses} 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet : lldp-logical-channel-top {uses} 
+class "lldp-logical-channel-top" as openconfig_terminal_device_I_lldp_logical_channel_top_grouping <<(G,Lime) grouping>> 
+class "lldp" as  openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp <<container>> 
+openconfig_terminal_device_I_lldp_logical_channel_top_grouping *-- "1" openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp 
+class "config" as  openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_config <<container>> 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp *-- "1" openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_config 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_config : lldp-logical-channel-config {uses} 
+class "state" as  openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_state <<container>> 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp *-- "1" openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_state 
+note bottom of openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_state : lldp-logical-channel-config {uses} 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_state : oc-lldp:lldp-interface-state {uses} 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp : lldp-logical-channel-neighbor-top {uses} 
+class "lldp-logical-channel-config" as openconfig_terminal_device_I_lldp_logical_channel_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_lldp_logical_channel_config_grouping : enabled : boolean   = false 
+openconfig_terminal_device_I_lldp_logical_channel_config_grouping : snooping : boolean   = false 
+class "lldp-logical-channel-neighbor-top" as openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_grouping <<(G,Lime) grouping>> 
+class "neighbors" as  openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors <<container>> 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_grouping *-- "1" openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors 
+note bottom of openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors
+<b>Config = </b>false
+end note 
+class "neighbor" as openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor << (L, #FF7700) list>> 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors *-- "0..N" openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor : +id : leafref : ../state/id  {key} 
+class "config" as  openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_config <<container>> 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor *-- "1" openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_config 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_config : lldp-logical-channel-neighbor-config {uses} 
+class "state" as  openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state <<container>> 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor *-- "1" openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state 
+note bottom of openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state : oc-lldp:lldp-system-info-config {uses} 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state : oc-lldp:lldp-system-info-state {uses} 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state : oc-lldp:lldp-neighbor-config {uses} 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_state : oc-lldp:lldp-neighbor-state {uses} 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor : oc-lldp:lldp-custom-tlv-top {uses} 
+class "lldp-logical-channel-neighbor-config" as openconfig_terminal_device_I_lldp_logical_channel_neighbor_config_grouping <<(G,Lime) grouping>> 
+class "terminal-otn-protocol-config" as openconfig_terminal_device_I_terminal_otn_protocol_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_otn_protocol_config_grouping : tti-msg-transmit : string  
+openconfig_terminal_device_I_terminal_otn_protocol_config_grouping : tti-msg-expected : string  
+openconfig_terminal_device_I_terminal_otn_protocol_config_grouping : tti-msg-auto : boolean  
+openconfig_terminal_device_I_terminal_otn_protocol_config_grouping : tributary-slot-granularity : identityref {oc-opt-types:TRIBUTARY_SLOT_GRANULARITY}  
+class "terminal-otn-protocol-counter-stats" as openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : errored-seconds : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : severely-errored-seconds : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : unavailable-seconds : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : code-violations : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : errored-blocks : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : fec-uncorrectable-blocks : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : fec-uncorrectable-words : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : fec-corrected-bytes : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : fec-corrected-bits : yang:counter64  
+openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : background-block-errors : yang:counter64  
+class "terminal-otn-protocol-multi-stats" as openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_grouping <<(G,Lime) grouping>> 
+class "pre-fec-ber" as  openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_pre_fec_ber <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_grouping *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_pre_fec_ber 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_pre_fec_ber : oc-opt-types:avg-min-max-instant-stats-precision18-ber {uses} 
+class "post-fec-ber" as  openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_post_fec_ber <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_grouping *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_post_fec_ber 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_post_fec_ber : oc-opt-types:avg-min-max-instant-stats-precision18-ber {uses} 
+class "q-value" as  openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_q_value <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_grouping *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_q_value 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_q_value : oc-types:avg-min-max-instant-stats-precision2-dB {uses} 
+class "esnr" as  openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_esnr <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_grouping *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_esnr 
+openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_I_esnr : oc-types:avg-min-max-instant-stats-precision2-dB {uses} 
+class "terminal-otn-protocol-state" as openconfig_terminal_device_I_terminal_otn_protocol_state_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_otn_protocol_state_grouping : tti-msg-recv : string  
+openconfig_terminal_device_I_terminal_otn_protocol_state_grouping : rdi-msg : string  
+openconfig_terminal_device_I_terminal_otn_protocol_state_grouping : terminal-otn-protocol-counter-stats {uses} 
+openconfig_terminal_device_I_terminal_otn_protocol_state_grouping : terminal-otn-protocol-multi-stats {uses} 
+class "terminal-otn-protocol-top" as openconfig_terminal_device_I_terminal_otn_protocol_top_grouping <<(G,Lime) grouping>> 
+class "otn" as  openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_top_grouping *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn 
+class "config" as  openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_config <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_config 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_config : terminal-otn-protocol-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state <<container>> 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn *-- "1" openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state 
+note bottom of openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state : terminal-otn-protocol-config {uses} 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state : terminal-otn-protocol-state {uses} 
+class "terminal-client-port-assignment-config" as openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping : index : uint32  
+openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping : description : string  
+openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping : logical-channel : leafref : /oc-opt-term:terminal-device/oc-opt-term:logical-channels/oc-opt-term:channel/oc-opt-term:index  
+openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping : allocation : decimal64   {Gbps}
+class "terminal-client-port-assignment-state" as openconfig_terminal_device_I_terminal_client_port_assignment_state_grouping <<(G,Lime) grouping>> 
+class "terminal-client-port-assignment-top" as openconfig_terminal_device_I_terminal_client_port_assignment_top_grouping <<(G,Lime) grouping>> 
+class "logical-channel-assignments" as  openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments <<container>> 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_grouping *-- "1" openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments 
+class "assignment" as openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment << (L, #FF7700) list>> 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments *-- "0..N" openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment : +index : leafref : ../config/index  {key} 
+class "config" as  openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_config <<container>> 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment *-- "1" openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_config 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_config : terminal-client-port-assignment-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state <<container>> 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment *-- "1" openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state 
+note bottom of openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state : terminal-client-port-assignment-config {uses} 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state : terminal-client-port-assignment-state {uses} 
+class "terminal-logical-chan-assignment-config" as openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : +index : uint32  {key} 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : description : string  
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : assignment-type : enumeration : {LOGICAL_CHANNEL,OPTICAL_CHANNEL,}  
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : logical-channel : leafref : /oc-opt-term:terminal-device/oc-opt-term:logical-channels/oc-opt-term:channel/oc-opt-term:index  
+note bottom of openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping
+<b>Must</b> (logical-channel):
+../assignment-type = 'LOGICAL_CHANNEL'
+
+end note 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : optical-channel : leafref : /oc-platform:components/oc-platform:component/oc-platform:name  
+note bottom of openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping
+<b>Must</b> (optical-channel):
+../assignment-type = 'OPTICAL_CHANNEL'
+
+end note 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : allocation : decimal64   {Gbps}
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : tributary-slot-index : int32  
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : mapping : identityref {oc-opt-types:FRAME_MAPPING_PROTOCOL}  
+class "terminal-logical-chan-assignment-state" as openconfig_terminal_device_I_terminal_logical_chan_assignment_state_grouping <<(G,Lime) grouping>> 
+class "terminal-logical-chan-assignment-top" as openconfig_terminal_device_I_terminal_logical_chan_assignment_top_grouping <<(G,Lime) grouping>> 
+class "logical-channel-assignments" as  openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments <<container>> 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_grouping *-- "1" openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments 
+class "assignment" as openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment << (L, #FF7700) list>> 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments *-- "0..N" openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment : +index : leafref : ../config/index  {key} 
+class "config" as  openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_config <<container>> 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment *-- "1" openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_config 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_config : terminal-logical-chan-assignment-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state <<container>> 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment *-- "1" openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state 
+note bottom of openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state : terminal-logical-chan-assignment-config {uses} 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state : terminal-logical-chan-assignment-state {uses} 
+class "terminal-logical-channel-ingress-config" as openconfig_terminal_device_I_terminal_logical_channel_ingress_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_config_grouping : transceiver : leafref : /oc-platform:components/oc-platform:component/oc-platform:name  
+openconfig_terminal_device_I_terminal_logical_channel_ingress_config_grouping : physical-channel []: leafref : /oc-platform:components/oc-platform:component/oc-transceiver:transceiver/oc-transceiver:physical-channels/oc-transceiver:channel/oc-transceiver:index 
+class "terminal-logical-channel-ingress-state" as openconfig_terminal_device_I_terminal_logical_channel_ingress_state_grouping <<(G,Lime) grouping>> 
+class "terminal-logical-channel-ingress-top" as openconfig_terminal_device_I_terminal_logical_channel_ingress_top_grouping <<(G,Lime) grouping>> 
+class "ingress" as  openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress <<container>> 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_grouping *-- "1" openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress 
+class "config" as  openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_config <<container>> 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress *-- "1" openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_config 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_config : terminal-logical-channel-ingress-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state <<container>> 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress *-- "1" openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state 
+note bottom of openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state : terminal-logical-channel-ingress-config {uses} 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state : terminal-logical-channel-ingress-state {uses} 
+class "terminal-logical-channel-config" as openconfig_terminal_device_I_terminal_logical_channel_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : +index : uint32  {key} 
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : description : string  
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : admin-state : oc-opt-types:admin-state-type  
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : rate-class : identityref {oc-opt-types:TRIBUTARY_RATE_CLASS_TYPE}  
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : trib-protocol : identityref {oc-opt-types:TRIBUTARY_PROTOCOL_TYPE}  
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : logical-channel-type : identityref {oc-opt-types:LOGICAL_ELEMENT_PROTOCOL_TYPE}  
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : loopback-mode : oc-opt-types:loopback-mode-type  
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping : test-signal : boolean  
+class "terminal-logical-channel-state" as openconfig_terminal_device_I_terminal_logical_channel_state_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_logical_channel_state_grouping : link-state : enumeration : {UP,DOWN,TESTING,}  
+class "terminal-logical-channel-top" as openconfig_terminal_device_I_terminal_logical_channel_top_grouping <<(G,Lime) grouping>> 
+class "logical-channels" as  openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels <<container>> 
+openconfig_terminal_device_I_terminal_logical_channel_top_grouping *-- "1" openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels 
+class "channel" as openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel << (L, #FF7700) list>> 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels *-- "0..N" openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel : +index : leafref : ../config/index  {key} 
+class "config" as  openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_config <<container>> 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel *-- "1" openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_config 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_config : terminal-logical-channel-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state <<container>> 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel *-- "1" openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state 
+note bottom of openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state : terminal-logical-channel-config {uses} 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state : terminal-logical-channel-state {uses} 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel : terminal-otn-protocol-top {uses} 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel : terminal-ethernet-protocol-top {uses} 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel : terminal-logical-channel-ingress-top {uses} 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel : terminal-logical-chan-assignment-top {uses} 
+class "terminal-optical-channel-config" as openconfig_terminal_device_I_terminal_optical_channel_config_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_optical_channel_config_grouping : frequency : oc-opt-types:frequency-type  
+openconfig_terminal_device_I_terminal_optical_channel_config_grouping : target-output-power : decimal64   {dBm}
+openconfig_terminal_device_I_terminal_optical_channel_config_grouping : operational-mode : uint16  
+openconfig_terminal_device_I_terminal_optical_channel_config_grouping : line-port : leafref : /oc-platform:components/oc-platform:component/oc-platform:name  
+class "terminal-optical-channel-state" as openconfig_terminal_device_I_terminal_optical_channel_state_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_optical_channel_state_grouping : group-id : uint32  
+openconfig_terminal_device_I_terminal_optical_channel_state_grouping : oc-transceiver:optical-power-state {uses} 
+class "chromatic-dispersion" as  openconfig_terminal_device_I_terminal_optical_channel_state_I_chromatic_dispersion <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_state_grouping *-- "1" openconfig_terminal_device_I_terminal_optical_channel_state_I_chromatic_dispersion 
+openconfig_terminal_device_I_terminal_optical_channel_state_I_chromatic_dispersion : oc-opt-types:avg-min-max-instant-stats-precision2-ps-nm {uses} 
+class "polarization-mode-dispersion" as  openconfig_terminal_device_I_terminal_optical_channel_state_I_polarization_mode_dispersion <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_state_grouping *-- "1" openconfig_terminal_device_I_terminal_optical_channel_state_I_polarization_mode_dispersion 
+openconfig_terminal_device_I_terminal_optical_channel_state_I_polarization_mode_dispersion : oc-opt-types:avg-min-max-instant-stats-precision2-ps {uses} 
+class "second-order-polarization-mode-dispersion" as  openconfig_terminal_device_I_terminal_optical_channel_state_I_second_order_polarization_mode_dispersion <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_state_grouping *-- "1" openconfig_terminal_device_I_terminal_optical_channel_state_I_second_order_polarization_mode_dispersion 
+openconfig_terminal_device_I_terminal_optical_channel_state_I_second_order_polarization_mode_dispersion : oc-opt-types:avg-min-max-instant-stats-precision2-ps2 {uses} 
+class "polarization-dependent-loss" as  openconfig_terminal_device_I_terminal_optical_channel_state_I_polarization_dependent_loss <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_state_grouping *-- "1" openconfig_terminal_device_I_terminal_optical_channel_state_I_polarization_dependent_loss 
+openconfig_terminal_device_I_terminal_optical_channel_state_I_polarization_dependent_loss : oc-types:avg-min-max-instant-stats-precision2-dB {uses} 
+class "terminal-optical-channel-top" as openconfig_terminal_device_I_terminal_optical_channel_top_grouping <<(G,Lime) grouping>> 
+class "optical-channel" as  openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_top_grouping *-- "1" openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel 
+class "config" as  openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_config <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel *-- "1" openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_config 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_config : terminal-optical-channel-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state <<container>> 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel *-- "1" openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state 
+note bottom of openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state : terminal-optical-channel-config {uses} 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state : terminal-optical-channel-state {uses} 
+class "terminal-operational-mode-config" as openconfig_terminal_device_I_terminal_operational_mode_config_grouping <<(G,Lime) grouping>> 
+class "terminal-operational-mode-state" as openconfig_terminal_device_I_terminal_operational_mode_state_grouping <<(G,Lime) grouping>> 
+openconfig_terminal_device_I_terminal_operational_mode_state_grouping : mode-id : uint16  
+openconfig_terminal_device_I_terminal_operational_mode_state_grouping : description : string  
+openconfig_terminal_device_I_terminal_operational_mode_state_grouping : vendor-id : string  
+class "terminal-operational-mode-top" as openconfig_terminal_device_I_terminal_operational_mode_top_grouping <<(G,Lime) grouping>> 
+class "operational-modes" as  openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes <<container>> 
+openconfig_terminal_device_I_terminal_operational_mode_top_grouping *-- "1" openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes 
+class "mode" as openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode << (L, #FF7700) list>> 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes *-- "0..N" openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode 
+note bottom of openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode : +mode-id : leafref : ../state/mode-id  {key} 
+class "config" as  openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_config <<container>> 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode *-- "1" openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_config 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_config : terminal-operational-mode-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state <<container>> 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode *-- "1" openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state 
+note bottom of openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state : terminal-operational-mode-config {uses} 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state : terminal-operational-mode-state {uses} 
+class "terminal-device-config" as openconfig_terminal_device_I_terminal_device_config_grouping <<(G,Lime) grouping>> 
+class "terminal-device-state" as openconfig_terminal_device_I_terminal_device_state_grouping <<(G,Lime) grouping>> 
+class "terminal-device-top" as openconfig_terminal_device_I_terminal_device_top_grouping <<(G,Lime) grouping>> 
+class "terminal-device" as  openconfig_terminal_device_I_terminal_device_top_I_terminal_device <<container>> 
+openconfig_terminal_device_I_terminal_device_top_grouping *-- "1" openconfig_terminal_device_I_terminal_device_top_I_terminal_device 
+class "config" as  openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_config <<container>> 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device *-- "1" openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_config 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_config : terminal-device-config {uses} 
+class "state" as  openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state <<container>> 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device *-- "1" openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state 
+note bottom of openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state
+<b>Config = </b>false
+end note 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state : terminal-device-config {uses} 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state : terminal-device-state {uses} 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device : terminal-logical-channel-top {uses} 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device : terminal-operational-mode-top {uses} 
+class "/oc-platform:components/oc-platform:component" as oc_platform_components_oc_platform_component << (A,CadetBlue) augment>>
+openconfig_terminal_device *--  oc_platform_components_oc_platform_component 
+note bottom of oc_platform_components_oc_platform_component
+<b>When: </b>/oc-platform:components/oc-platform:component/oc-platform:state/oc-platform:type = 'OPTICAL_CHANNEL'
+end note 
+oc_platform_components_oc_platform_component : terminal-optical-channel-top {uses} 
+openconfig_terminal_device_I_terminal_otn_protocol_config_grouping-->oc_opt_types_TRIBUTARY_SLOT_GRANULARITY: tributary-slot-granularity
+openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping-->oc_opt_types_FRAME_MAPPING_PROTOCOL: mapping
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping-->oc_opt_types_TRIBUTARY_RATE_CLASS_TYPE: rate-class
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping-->oc_opt_types_TRIBUTARY_PROTOCOL_TYPE: trib-protocol
+openconfig_terminal_device_I_terminal_logical_channel_config_grouping-->oc_opt_types_LOGICAL_ELEMENT_PROTOCOL_TYPE: logical-channel-type
+} 
+
+openconfig_terminal_device_I_terminal_ethernet_protocol_state_grouping --> openconfig_terminal_device_I_terminal_ethernet_protocol_state_counters_grouping : uses 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_config --> openconfig_terminal_device_I_terminal_ethernet_protocol_config_grouping : uses 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state --> openconfig_terminal_device_I_terminal_ethernet_protocol_config_grouping : uses 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet_I_state --> openconfig_terminal_device_I_terminal_ethernet_protocol_state_grouping : uses 
+openconfig_terminal_device_I_terminal_ethernet_protocol_top_I_ethernet --> openconfig_terminal_device_I_lldp_logical_channel_top_grouping : uses 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_config --> openconfig_terminal_device_I_lldp_logical_channel_config_grouping : uses 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp_I_state --> openconfig_terminal_device_I_lldp_logical_channel_config_grouping : uses 
+openconfig_terminal_device_I_lldp_logical_channel_top_I_lldp --> openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_grouping : uses 
+openconfig_terminal_device_I_lldp_logical_channel_neighbor_top_I_neighbors_I_neighbor_I_config --> openconfig_terminal_device_I_lldp_logical_channel_neighbor_config_grouping : uses 
+openconfig_terminal_device_I_terminal_otn_protocol_state_grouping --> openconfig_terminal_device_I_terminal_otn_protocol_counter_stats_grouping : uses 
+openconfig_terminal_device_I_terminal_otn_protocol_state_grouping --> openconfig_terminal_device_I_terminal_otn_protocol_multi_stats_grouping : uses 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_config --> openconfig_terminal_device_I_terminal_otn_protocol_config_grouping : uses 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state --> openconfig_terminal_device_I_terminal_otn_protocol_config_grouping : uses 
+openconfig_terminal_device_I_terminal_otn_protocol_top_I_otn_I_state --> openconfig_terminal_device_I_terminal_otn_protocol_state_grouping : uses 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_config --> openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping : uses 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state --> openconfig_terminal_device_I_terminal_client_port_assignment_config_grouping : uses 
+openconfig_terminal_device_I_terminal_client_port_assignment_top_I_logical_channel_assignments_I_assignment_I_state --> openconfig_terminal_device_I_terminal_client_port_assignment_state_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_config --> openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state --> openconfig_terminal_device_I_terminal_logical_chan_assignment_config_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_chan_assignment_top_I_logical_channel_assignments_I_assignment_I_state --> openconfig_terminal_device_I_terminal_logical_chan_assignment_state_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_config --> openconfig_terminal_device_I_terminal_logical_channel_ingress_config_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state --> openconfig_terminal_device_I_terminal_logical_channel_ingress_config_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_ingress_top_I_ingress_I_state --> openconfig_terminal_device_I_terminal_logical_channel_ingress_state_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_config --> openconfig_terminal_device_I_terminal_logical_channel_config_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state --> openconfig_terminal_device_I_terminal_logical_channel_config_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel_I_state --> openconfig_terminal_device_I_terminal_logical_channel_state_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel --> openconfig_terminal_device_I_terminal_otn_protocol_top_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel --> openconfig_terminal_device_I_terminal_ethernet_protocol_top_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel --> openconfig_terminal_device_I_terminal_logical_channel_ingress_top_grouping : uses 
+openconfig_terminal_device_I_terminal_logical_channel_top_I_logical_channels_I_channel --> openconfig_terminal_device_I_terminal_logical_chan_assignment_top_grouping : uses 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_config --> openconfig_terminal_device_I_terminal_optical_channel_config_grouping : uses 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state --> openconfig_terminal_device_I_terminal_optical_channel_config_grouping : uses 
+openconfig_terminal_device_I_terminal_optical_channel_top_I_optical_channel_I_state --> openconfig_terminal_device_I_terminal_optical_channel_state_grouping : uses 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_config --> openconfig_terminal_device_I_terminal_operational_mode_config_grouping : uses 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state --> openconfig_terminal_device_I_terminal_operational_mode_config_grouping : uses 
+openconfig_terminal_device_I_terminal_operational_mode_top_I_operational_modes_I_mode_I_state --> openconfig_terminal_device_I_terminal_operational_mode_state_grouping : uses 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_config --> openconfig_terminal_device_I_terminal_device_config_grouping : uses 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state --> openconfig_terminal_device_I_terminal_device_config_grouping : uses 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device_I_state --> openconfig_terminal_device_I_terminal_device_state_grouping : uses 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device --> openconfig_terminal_device_I_terminal_logical_channel_top_grouping : uses 
+openconfig_terminal_device_I_terminal_device_top_I_terminal_device --> openconfig_terminal_device_I_terminal_operational_mode_top_grouping : uses 
+oc_platform_components_oc_platform_component --> openconfig_terminal_device_I_terminal_optical_channel_top_grouping : uses 
+center footer
+ <size:20> UML Generated : 2020-04-19 01:36 </size>
+ endfooter 
+@enduml 
