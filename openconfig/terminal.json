@@ -1,0 +1,22 @@
+{
+  "terminal-device" : {
+    "logical-channels" : {
+      "channel" : [
+        {
+          "index" : 1,
+          "config" : { "index" : 1 },
+          "otn" : {
+            "state" : {
+              "q-value" : {
+                "instant" : "5"
+              },
+              "esnr" : {
+               "instant" : "6"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
