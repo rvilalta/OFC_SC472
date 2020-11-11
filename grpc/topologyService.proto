@@ -1,0 +1,38 @@
+//Example of topology
+syntax = "proto3";
+package topology;
+
+import "google/protobuf/empty.proto";
+
+service TopologyService {
+  rpc GetTopology (google.protobuf.Empty) returns (Topology) {}
+}
+
+
+message Link {
+  string link_id = 1;
+  string source_node = 2;
+  string target_node = 3;
+  string source_port = 4;
+  string target_port = 5;
+}
+
+message Node {
+  string node_id = 1;
+  repeated Port port = 2;
+}
+
+message Port {
+  string port_id = 1;
+  enum LayerProtocolName {
+    ETH = 0;
+    OPTICAL = 1;
+  }
+  LayerProtocolName layerProtocolName = 2;
+}
+
+message Topology {
+  repeated Node node = 1;
+  repeated Link link = 2;
+}
+
