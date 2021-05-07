@@ -1,0 +1,592 @@
+openapi: 3.0.1
+info:
+  title: topology API
+  description: topology API generated from yang definitions
+  version: "1.0"
+servers:
+- url: //localhost:1234/
+paths:
+  /data/topology/:
+    get:
+      tags:
+      - topology
+      description: returns topology.Topology
+      operationId: data_topology_get
+      responses:
+        200:
+          description: topology.Topology
+          content:
+            application/yang-data+json:
+              schema:
+                $ref: '#/components/schemas/topology.Topology'
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    put:
+      tags:
+      - topology
+      description: creates or updates topology.Topology
+      operationId: data_topology_put
+      requestBody:
+        description: topology.Topology to be added or updated
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Topology'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        204:
+          description: Object modified
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    post:
+      tags:
+      - topology
+      description: creates topology.Topology
+      operationId: data_topology_post
+      requestBody:
+        description: topology.Topology to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Topology'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    delete:
+      tags:
+      - topology
+      description: removes topology.Topology
+      operationId: data_topology_delete
+      responses:
+        204:
+          description: Object deleted
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+  /data/topology/link/:
+    post:
+      tags:
+      - topology
+      description: creates topology.Link
+      operationId: data_topology_link_post
+      requestBody:
+        description: topology.Link to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Link'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+  /data/topology/link={link-id}/:
+    get:
+      tags:
+      - topology
+      description: returns topology.Link
+      operationId: data_topology_linklink_id_get
+      parameters:
+      - name: link-id
+        in: path
+        description: Id of link
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: topology.Link
+          content:
+            application/yang-data+json:
+              schema:
+                $ref: '#/components/schemas/topology.Link'
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    put:
+      tags:
+      - topology
+      description: creates or updates topology.Link
+      operationId: data_topology_linklink_id_put
+      parameters:
+      - name: link-id
+        in: path
+        description: Id of link
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Link to be added or updated
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Link'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        204:
+          description: Object modified
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    post:
+      tags:
+      - topology
+      description: creates topology.Link
+      operationId: data_topology_linklink_id_post
+      parameters:
+      - name: link-id
+        in: path
+        description: Id of link
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Link to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Link'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    delete:
+      tags:
+      - topology
+      description: removes topology.Link
+      operationId: data_topology_linklink_id_delete
+      parameters:
+      - name: link-id
+        in: path
+        description: Id of link
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Object deleted
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+  /data/topology/node/:
+    post:
+      tags:
+      - topology
+      description: creates topology.Node
+      operationId: data_topology_node_post
+      requestBody:
+        description: topology.Node to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Node'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+  /data/topology/node={node-id}/:
+    get:
+      tags:
+      - topology
+      description: returns topology.Node
+      operationId: data_topology_nodenode_id_get
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: topology.Node
+          content:
+            application/yang-data+json:
+              schema:
+                $ref: '#/components/schemas/topology.Node'
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    put:
+      tags:
+      - topology
+      description: creates or updates topology.Node
+      operationId: data_topology_nodenode_id_put
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Node to be added or updated
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Node'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        204:
+          description: Object modified
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    post:
+      tags:
+      - topology
+      description: creates topology.Node
+      operationId: data_topology_nodenode_id_post
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Node to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Node'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    delete:
+      tags:
+      - topology
+      description: removes topology.Node
+      operationId: data_topology_nodenode_id_delete
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Object deleted
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+  /data/topology/node={node-id}/port/:
+    post:
+      tags:
+      - topology
+      description: creates topology.Port
+      operationId: data_topology_nodenode_id_port_post
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Port to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Port'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+  /data/topology/node={node-id}/port={port-id}/:
+    get:
+      tags:
+      - topology
+      description: returns topology.Port
+      operationId: data_topology_nodenode_id_portport_id_get
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      - name: port-id
+        in: path
+        description: Id of port
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: topology.Port
+          content:
+            application/yang-data+json:
+              schema:
+                $ref: '#/components/schemas/topology.Port'
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    put:
+      tags:
+      - topology
+      description: creates or updates topology.Port
+      operationId: data_topology_nodenode_id_portport_id_put
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      - name: port-id
+        in: path
+        description: Id of port
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Port to be added or updated
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Port'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        204:
+          description: Object modified
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    post:
+      tags:
+      - topology
+      description: creates topology.Port
+      operationId: data_topology_nodenode_id_portport_id_post
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      - name: port-id
+        in: path
+        description: Id of port
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: topology.Port to be added to list
+        content:
+          application/yang-data+json:
+            schema:
+              $ref: '#/components/schemas/topology.Port'
+        required: false
+      responses:
+        201:
+          description: Object created
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+        409:
+          description: Object already exists
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+    delete:
+      tags:
+      - topology
+      description: removes topology.Port
+      operationId: data_topology_nodenode_id_portport_id_delete
+      parameters:
+      - name: node-id
+        in: path
+        description: Id of node
+        required: true
+        schema:
+          type: string
+      - name: port-id
+        in: path
+        description: Id of port
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Object deleted
+          content: {}
+        400:
+          description: Internal error
+          content: {}
+      x-openapi-router-controller: swagger_server.controllers.topology_controller
+components:
+  schemas:
+    topology.LayerProtocolName:
+      type: string
+      enum:
+      - ETH
+      - OPTICAL
+    topology.Link:
+      type: object
+      properties:
+        target-port:
+          type: string
+          x-path: /topology/node/port/port-id
+        source-port:
+          type: string
+          x-path: /topology/node/port/port-id
+        target-node:
+          type: string
+          x-path: /topology/node/node-id
+        link-id:
+          type: string
+        source-node:
+          type: string
+          x-path: /topology/node/node-id
+      example:
+        target-port: target-port
+        source-port: source-port
+        target-node: target-node
+        link-id: link-id
+        source-node: source-node
+    topology.Node:
+      type: object
+      properties:
+        node-id:
+          type: string
+        port:
+          type: array
+          items:
+            $ref: '#/components/schemas/topology.Port'
+      example:
+        node-id: node-id
+        port:
+        - layer-protocol-name: ETH
+          port-id: port-id
+        - layer-protocol-name: ETH
+          port-id: port-id
+    topology.Port:
+      type: object
+      properties:
+        layer-protocol-name:
+          $ref: '#/components/schemas/topology.LayerProtocolName'
+        port-id:
+          type: string
+      example:
+        layer-protocol-name: ETH
+        port-id: port-id
+    topology.Topology:
+      type: object
+      properties:
+        link:
+          type: array
+          items:
+            $ref: '#/components/schemas/topology.Link'
+        node:
+          type: array
+          items:
+            $ref: '#/components/schemas/topology.Node'
+      example:
+        node:
+        - node-id: node-id
+          port:
+          - layer-protocol-name: ETH
+            port-id: port-id
+          - layer-protocol-name: ETH
+            port-id: port-id
+        - node-id: node-id
+          port:
+          - layer-protocol-name: ETH
+            port-id: port-id
+          - layer-protocol-name: ETH
+            port-id: port-id
+        link:
+        - target-port: target-port
+          source-port: source-port
+          target-node: target-node
+          link-id: link-id
+          source-node: source-node
+        - target-port: target-port
+          source-port: source-port
+          target-node: target-node
+          link-id: link-id
+          source-node: source-node
+

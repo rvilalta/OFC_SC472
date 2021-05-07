@@ -17,10 +17,10 @@ REQUIRES = ["connexion"]
 setup(
     name=NAME,
     version=VERSION,
-    description="connection API",
+    description="topology API",
     author_email="",
     url="",
-    keywords=["Swagger", "connection API"],
+    keywords=["Swagger", "topology API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     package_data={'': ['swagger/swagger.yaml']},
@@ -28,6 +28,6 @@ setup(
     entry_points={
         'console_scripts': ['swagger_server=swagger_server.__main__:main']},
     long_description="""\
-    connection API generated from yang definitions
+    topology API generated from yang definitions
     """
 )
