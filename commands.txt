@@ -106,20 +106,23 @@ $ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf
 $ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/
 $ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/
 $ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/node/
-$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/node/node-mul-pe-1/
-$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-pe1/node/node-eth-pe-1/owned-node-edge-point/
-$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-pe1/node/node-eth-pe-1/owned-node-edge-point/nep-pe1-eth-uni1/
-$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/link/link-pe1-odu4-nni1-pi4-odu4-nni2/
-$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-pe1/link/link-pe1-eth-pool-pe1-odu2-pool/
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/node/node-pe-1/
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/node/node-pe-1/owned-node-edge-point/
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/node/node-pe-1/owned-node-edge-point/NEP_PE_01_UNI1/
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/topology/topo-nwk/link/PE1_NNI3_PI3_NNI1/
 
-RUN TAPI_APP
+CONNECTIONS:
+
+$ curl -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connectivity-service/cs1/ -d @cs1.json
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connectivity-service/
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connectivity-service/cs1/
+$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connection/cs1/
+$ curl -X DELETE -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connectivity-service/cs1/
+
+
+EXERCISE: TAPI_APP
 $ cd /root/OFC_SC472/tapi/tapi_app
 $ python3 tapi_app.py
-
-RUN TAPI CLIENT
-$ cd /root/OFC_SC472/tapi/client
-$ curl -X POST -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connectivity-service/cs1/ -d @cs1.json
-$ curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8080/restconf/config/context/connection/cs1/
 
 
 == GRPC

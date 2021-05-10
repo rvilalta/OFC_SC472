@@ -15,8 +15,9 @@ def create_context_connectivity_service_connectivity_service_by_id(uuid, connect
     connection = {
       "uuid" : uuid,
       "connection-end-point": [
-           "/restconf/config/topology/top0/node/node1/owned-node-edge-point/nep11/cep-list/cep11",
-           "/restconf/config/topology/top0/node/node1/owned-node-edge-point/nep12/cep-list/cep11"
+           "/restconf/config/context/topology/topo-nwk/node/node-pe-1/owned-node-edge-point/NEP_PE_01_NNI3/cep-list/cep11",
+           "/restconf/config/context/topology/topo-nwk/node/node-pe-3/owned-node-edge-point/NEP_PE_03_NNI2/cep-list/cep11",
+           "/restconf/config/context/topology/topo-nwk/node/node-pe-2/owned-node-edge-point/NEP_PE_02_NNI3/cep-list/cep11"
       ]
     }
     database.context['connection'].append(connection)
