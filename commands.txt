@@ -177,6 +177,33 @@ USE PYTHON CLIENT
 $ cd /usr/share/gocode/src/github.com/google/gnxi/gnmi_cli_py
 $ python py_gnmicli.py -n -m get -t localhost -p 10161 -x /topology -u foo -pass bar
 
+== KAFKA
+$ cd /root/OFC_SC472/kafka
+
+(INSTALL)
+$ pip3 install kafka-python
+$ wget https://ftp.cixug.es/apache/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+$ tar -xzf kafka_2.13-2.8.0.tgz
+(RUN)
+$ cd kafka_2.13-2.8.0
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+(In new window)
+$ cd /root/OFC_SC472/kafka/kafka_2.13-2.8.0
+$ bin/kafka-server-start.sh config/server.properties
+
+CREATE TOPIC
+(In new window)
+$ cd /root/OFC_SC472/kafka/kafka_2.13-2.8.0
+$ bin/kafka-topics.sh --create --topic my-topic --bootstrap-server localhost:9092
+
+(In new window)
+$ cd /root/OFC_SC472/kafka
+$ python3 sub.py
+ 
+(In new window)
+$ cd /root/OFC_SC472/kafka
+$ python3 pub.py
+
 == APPENDIX: CONFD
 $ cd /root/OFC_SC472/netconf
 $ unzip confd-basic-6.4.linux.x86_64.zip  
