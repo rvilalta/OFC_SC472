@@ -4,7 +4,7 @@ This github repository is for educational purposes. It contains the necessary ma
 
 * OFC2021 SC 472: Hands-on Short Course: Controlling and Monitoring Network Equipment
 
-A VirtualBox virtual machine image is provided in [http://bit.ly/OFC2021_SC472](http://bit.ly/OFC2021_SC472). Please make sure to download, install it and make sure you are able to run it before the course starts. 
+A VirtualBox virtual machine image is provided in [http://bit.ly/OFC2021_SC472](http://bit.ly/OFC2021_SC472) and [https://bit.ly/OFC_SC472_onedrive](https://bit.ly/OFC_SC472_onedrive). Please make sure to download, install it and make sure you are able to run it before the course starts. 
 
 The **login and password** for the VM are the following: 
 
