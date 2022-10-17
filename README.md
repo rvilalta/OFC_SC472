@@ -1,3 +1,6 @@
+# This repository is archived. New versions of repo will be available as part as ETSI TeraFlowSDN release
+
+
 # OFC2022 Short Course 472 - Hands-on: Controlling and Monitoring Optical Network Equipment
 
 This github repository is for educational purposes. It contains the necessary materials for:
